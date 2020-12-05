@@ -4,8 +4,8 @@ import scala.util.Using
 
 object Tobbagan extends App {
   case class MapRow(treeLocations: Array[Boolean]) {
-    val length = treeLocations.length
-    val width = if (treeLocations.length > 0)
+    val length: Int = treeLocations.length
+    val width: Int = if (treeLocations.length > 0)
       treeLocations.length
     else 0
     def treeAt(index: Int): Boolean = treeLocations(index)

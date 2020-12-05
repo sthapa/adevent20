@@ -6,7 +6,7 @@ import scala.util.Using
 object Seats extends App {
 
   case class Seat(row: Int, column: Int) {
-    val getSeatId = row * 8 + column
+    val getSeatId: Int = row * 8 + column
   }
   @tailrec
   final def getRow(identifier: List[Char], rowRange: Range = 0 to 127): Option[Int] = {
@@ -79,7 +79,7 @@ object Seats extends App {
       if (i == (sortedSeats.length - 1))
         (0, 0)
       else
-        (sortedSeats(i + 1) - sortedSeats(i), ((sortedSeats(i) + sortedSeats(i+1)) / 2))
+        (sortedSeats(i + 1) - sortedSeats(i), (sortedSeats(i) + sortedSeats(i+1)) / 2)
     }
     val missing = seatInfo.filter(elem => elem._1 == 2)
     println(missing)
@@ -91,8 +91,8 @@ object Seats extends App {
   }
 
   val input = Using(Source.fromFile("src/main/resources/seats"))  {_.getLines().toList}.getOrElse(List[String]())
-  val seats: List[Option[Seat]] = input.toList.map(getSeat(_))
-  val seatIds = seats.map(mapIds(_))
+  val seats: List[Option[Seat]] = input.map(getSeat)
+  val seatIds = seats.map(mapIds)
   println(s"Max id: ${seatIds.max}")
   println(s"Missing seat: ${getMissingSeat(seatIds)}")
 }

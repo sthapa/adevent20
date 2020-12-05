@@ -1,10 +1,9 @@
 import scala.io.Source
 import scala.util.Using
-import scala.util.matching.Regex
 
 object Passports extends  App {
   case class Passport(fields: Map[String, String]) {
-    def numFields = fields.size
+    def numFields: Int = fields.size
 
     def validField(fieldName: String): Boolean = {
       val fieldVal = fields.get(fieldName)
@@ -54,7 +53,7 @@ object Passports extends  App {
     def valid: Boolean = {
       val fieldList = List("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid")
       if (fields.size >= 7) {
-        fieldList.map(validField(_)).fold(true)((x, y) => x & y)
+        fieldList.map(validField).fold(true)((x, y) => x & y)
       } else
         false
     }
@@ -79,8 +78,8 @@ object Passports extends  App {
   val input: String = Using(Source.fromFile("src/main/resources/passports"))  {_.mkString}.getOrElse("")
   val passports = parsePassports(input)
 
-  val validPassports = passports.filter(_.valid).length
-  println(s"Valid passports = ${validPassports}")
+  val validPassports = passports.count(_.valid)
+  println(s"Valid passports = $validPassports")
 
 
 }
