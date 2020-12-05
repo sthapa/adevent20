@@ -90,7 +90,7 @@ object Seats extends App {
 
   }
 
-  val input = Using(Source.fromFile("/home/ssthapa/advent/seats"))  {_.getLines().toList}.getOrElse(List[String]())
+  val input = Using(Source.fromFile("src/main/resources/seats"))  {_.getLines().toList}.getOrElse(List[String]())
   val seats: List[Option[Seat]] = input.toList.map(getSeat(_))
   val seatIds = seats.map(mapIds(_))
   println(s"Max id: ${seatIds.max}")

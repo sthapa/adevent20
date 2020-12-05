@@ -15,7 +15,7 @@ object Pairs extends App {
       yield (x, y, z)
 
   val input: List[Int] =
-    (for (line <- Source.fromFile("/home/ssthapa/inputs").getLines)
+    (for (line <- Source.fromFile("src/main/resources/inputs").getLines)
       yield line.toInt).toList
 
 

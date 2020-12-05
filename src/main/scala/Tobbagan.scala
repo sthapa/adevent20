@@ -33,7 +33,7 @@ object Tobbagan extends App {
     collisions.count(x => x)
   }
 
-  val input: Array[MapRow] = Using(Source.fromFile("/home/ssthapa/advent/tobbagan"))
+  val input: Array[MapRow] = Using(Source.fromFile("src/main/resources/tobbagan"))
   {_.getLines()
     .map(l => parseLine(l))
     .toArray}.getOrElse(Array[MapRow]())

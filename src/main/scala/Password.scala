@@ -25,7 +25,7 @@ object Password extends App {
     (Policy(min = minMax(0).toInt, max = minMax(1).toInt, char = fields(1).head), fields(2))
   }
 
-  val input: List[(Policy, String)] = Using(Source.fromFile("/home/ssthapa/advent/passwords"))
+  val input: List[(Policy, String)] = Using(Source.fromFile("src/main/resources/passwords"))
       {_.getLines()
        .map(l => parseLine(l))
        .toList}.getOrElse(List((Policy(1, 1, 'a'), "b")))

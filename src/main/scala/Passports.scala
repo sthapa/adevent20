@@ -76,7 +76,7 @@ object Passports extends  App {
   }
 
 
-  val input: String = Using(Source.fromFile("/home/ssthapa/advent/passports"))  {_.mkString}.getOrElse("")
+  val input: String = Using(Source.fromFile("src/main/resources/passports"))  {_.mkString}.getOrElse("")
   val passports = parsePassports(input)
 
   val validPassports = passports.filter(_.valid).length
