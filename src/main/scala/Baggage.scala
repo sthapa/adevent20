@@ -50,11 +50,9 @@ object Baggage extends App {
 
   def containedIn(queryBag: Description, ruleBag: Description, rules: BagRules): Boolean = {
     val bagRule = rules.get(ruleBag)
-    if (queryBag == ruleBag)
-      false
     bagRule match {
       case Some(contained) =>
-        if (contained.filter({ case (_, desc) => desc == queryBag }).nonEmpty)
+        if (contained.exists { case (_, desc) => desc == queryBag })
           true
         else {
           val containedInRules = contained.map({ case (_, desc: String) => containedIn(queryBag, desc, rules) })
@@ -85,7 +83,7 @@ object Baggage extends App {
 
   val bagRules = parseBags(input)
   val shinySum = getRuleCount("shiny gold", bagRules)
-  println(s"shiny gold bag can be found in ${shinySum} rules")
+  println(s"shiny gold bag can be found in $shinySum rules")
   //  val testBags = List("faded blue", "dotted black", "vibrant plum", "dark olive", "shiny gold")
   //  testBags.foreach( bag => println(s"$bag contains ${getBagCount(bag, bagRules)} bags"))
   val testBags = List("shiny gold")
