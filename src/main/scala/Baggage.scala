@@ -8,8 +8,6 @@ object Baggage extends App {
   type Description = String
   type BagRules = Map[Description, List[(Int, Description)]]
 
-  //  case class Bag(description: Description, contains: List[(Int, Description)])
-
   final def parseBagContains(input: String) = {
     val containedBagRe = raw"(\d)+ ([a-z]+ [a-z]+)".r
     (for {
