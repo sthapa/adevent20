@@ -35,7 +35,7 @@ object Encoding extends App {
       None
   }
   val solution = results.filter(_.isDefined).map(_.get).toList.head
-  println(s"solution = ${solution} when completed")
+  println(s"solution = $solution when completed")
 
   val break = for ( solLength <- 1 to input.length) yield findWeakness(input, solution, solLength)
   println(s"break = ${break.filter(_.isDefined).map(_.get).toList} when completed")
