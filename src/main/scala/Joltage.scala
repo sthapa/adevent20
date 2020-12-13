@@ -36,19 +36,18 @@ object Joltage extends App {
   type AdapterChain = List[Int]
   var memoCache: scala.collection.mutable.Map[AdapterSet, Set[AdapterChain]] =
     scala.collection.mutable.Map[AdapterSet, Set[AdapterChain]]()
-/*
 
-  final def getAdapterChains(deviceInput: Int,
-                              adapters: AdapterSet) = {
-    if (memoCache.contains(adapters)) {
-      println(s"using cached value ${memoCache(adapters)}")
-      memoCache(adapters)
-    } else {
-      val sols = getAdapterChains(deviceInput, adapters, List())
-      memoCache += (adapters -> sols)
-      sols
-    }
-  }
+//  final def getAdapterChains(deviceInput: Int,
+//                              adapters: AdapterSet) = {
+//    if (memoCache.contains(adapters)) {
+//      println(s"using cached value ${memoCache(adapters)}")
+//      memoCache(adapters)
+//    } else {
+//      val sols = getAdapterChains(deviceInput, adapters, List())
+//      memoCache += (adapters -> sols)
+//      sols
+//    }
+//  }
   final def getAdapterChains(deviceInput: Int,
                              adapters: AdapterSet,
                              chain: AdapterChain): Set[AdapterChain] = {
@@ -80,7 +79,6 @@ object Joltage extends App {
         Set()
     }
   }
-*/
 
   def getPartOneSolution(solution: List[Int], deviceInput: Int) = {
     val diff = (0::solution).zip(solution.appended(deviceInput)).map(elem => elem._2 - elem._1)
@@ -93,8 +91,8 @@ object Joltage extends App {
   println(s"chain = $solution")
   println(s"Answer = ${getPartOneSolution(solution, deviceInput)}")
 
-//  val solutionSet = getAdapterChains(deviceInput, input, List())
+  val solutionSet = getAdapterChains(deviceInput, input, List())
 //  println(s"chains = $solutionSet")
-//  println(s"# solutions = ${solutionSet.size}")
+  println(s"# solutions = ${solutionSet.size}")
 
 }
